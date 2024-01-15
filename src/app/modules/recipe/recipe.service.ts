@@ -1,7 +1,9 @@
 import prisma from '../../shared/prisma'
 
 const createRecipe = async(payload:any) => {
-  const result = await prisma.recipe.create(payload)
+  const result = await prisma.recipe.create({
+    data:payload
+  })
   return result
 }
 
