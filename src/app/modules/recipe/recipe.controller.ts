@@ -42,4 +42,23 @@ const singleRecipe = catchAsync(
   },
 )
 
-export const recipeController = { createRecipe, recipeLists, singleRecipe }
+const editRecipe = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const id = Number(req.params.id)
+    const data = req.body
+    const result = await recipeService.updateRecipe(id, data)
+    sendApiResponse(
+      res,
+      httpStatus.OK,
+      'recipe is updated successfully',
+      result,
+    )
+  },
+)
+
+export const recipeController = {
+  createRecipe,
+  recipeLists,
+  singleRecipe,
+  editRecipe,
+}
