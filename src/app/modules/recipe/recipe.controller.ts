@@ -57,9 +57,24 @@ const editRecipe = catchAsync(
   },
 )
 
+// remove/delete a recipe
+const deleteRecipe = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const id = Number(req.params.id)
+    const result = await recipeService.deleteRecipe(id)
+    sendApiResponse(
+      res,
+      httpStatus.OK,
+      'recipe is deleted successfully',
+      result,
+    )
+  },
+)
+
 export const recipeController = {
   createRecipe,
   recipeLists,
   singleRecipe,
   editRecipe,
+  deleteRecipe,
 }

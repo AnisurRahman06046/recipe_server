@@ -42,9 +42,26 @@ const updateRecipe = async (id: number, payload: any) => {
   return result
 }
 
+// delete a recipe
+const deleteRecipe = async (id: number) => {
+  // check existing recipe
+  const isRecipeExists = await prisma.recipe.findUnique({
+    where: { id: id },
+  })
+  if (!isRecipeExists) {
+    throw new Error('Recipe is not found')
+  }
+
+  const result = await prisma.recipe.delete({
+    where: { id: id },
+  })
+  return result
+}
+
 export const recipeService = {
   createRecipe,
   recipeLists,
   singleRecipe,
   updateRecipe,
+  deleteRecipe,
 }
