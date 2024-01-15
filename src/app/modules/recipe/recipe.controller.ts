@@ -42,6 +42,7 @@ const singleRecipe = catchAsync(
   },
 )
 
+// update a recipe
 const editRecipe = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const id = Number(req.params.id)
