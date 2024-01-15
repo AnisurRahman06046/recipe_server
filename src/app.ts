@@ -8,6 +8,7 @@ import routes from './app/routes'
 
 import cookieParser from 'cookie-parser'
 import { globalErrorHandler } from './app/middleware/globalErrorHandler'
+import notFoundHandler from './app/middleware/notFound'
 
 const app: Application = express()
 
@@ -37,15 +38,6 @@ app.get("/error", (req: Request, res: Response, next: NextFunction) => {
 
 app.use(globalErrorHandler)
 
-app.use((req: Request, res: Response, next: NextFunction) => {
-  res.status(httpStatus.NOT_FOUND).json({
-    success: false,
-    message: "Not Found",
-    errorMessage: {
-      path: req.originalUrl,
-      message: "Not Found"
-    }
-  })
-})
+app.use(notFoundHandler)
 
 export default app
