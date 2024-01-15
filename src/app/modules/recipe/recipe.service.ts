@@ -1,10 +1,16 @@
 import prisma from '../../shared/prisma'
 
-const createRecipe = async(payload:any) => {
+const createRecipe = async (payload: any) => {
   const result = await prisma.recipe.create({
-    data:payload
+    data: payload,
   })
   return result
 }
 
-export const recipeService = { createRecipe }
+const recipeLists = async () => {
+  const result = await prisma.recipe.findMany({
+    select:{title:true}
+  })
+  return result
+}
+export const recipeService = { createRecipe, recipeLists }
