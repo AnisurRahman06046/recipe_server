@@ -15,6 +15,7 @@ model Recipe{
   title String @unique
   ingredients String[]
   instruction String 
+  description String
   imageUrl String?
 
   createdAt DateTime @default(now())

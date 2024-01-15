@@ -4,6 +4,7 @@ CREATE TABLE "recipes" (
     "title" TEXT NOT NULL,
     "ingredients" TEXT[],
     "instruction" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
     "imageUrl" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,

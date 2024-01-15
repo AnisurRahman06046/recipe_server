@@ -11,7 +11,7 @@ const createRecipe = async (payload: any) => {
 // fetch recipe list
 const recipeLists = async () => {
   const result = await prisma.recipe.findMany({
-    select: { title: true },
+    select: {id:true, title: true },
   })
   return result
 }
