@@ -9,8 +9,15 @@ const createRecipe = async (payload: any) => {
 
 const recipeLists = async () => {
   const result = await prisma.recipe.findMany({
-    select:{title:true}
+    select: { title: true },
   })
   return result
 }
-export const recipeService = { createRecipe, recipeLists }
+
+const singleRecipe = async (id: number) => {
+  const result = await prisma.recipe.findUnique({
+    where: { id: id },
+  })
+  return result
+}
+export const recipeService = { createRecipe, recipeLists, singleRecipe }
