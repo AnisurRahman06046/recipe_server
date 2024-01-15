@@ -5,7 +5,7 @@ import httpStatus from 'http-status'
 
 import { Prisma } from '@prisma/client'
 import config from '../../config'
-import { configDotenv } from 'dotenv'
+
 
 export const globalErrorHandler = (
   err: any,
